@@ -19,6 +19,6 @@ $mysqli->set_charset('utf8');
 
 //DB::setConnection($mysqli);
 
-$mysqli->query("set @@global.sql_mode='ERROR_FOR_DIVISION_BY_ZERO,NO_ZERO_DATE,NO_ZERO_IN_DATE,NO_AUTO_CREATE_USER'");
+//$mysqli->query("set @@global.sql_mode='ERROR_FOR_DIVISION_BY_ZERO,NO_ZERO_DATE,NO_ZERO_IN_DATE,NO_AUTO_CREATE_USER'");
 mb_internal_encoding('UTF-8');
 ?>

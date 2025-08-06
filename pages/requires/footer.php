@@ -72,6 +72,6 @@
 <div class="footer-line-three">
 	<div class="container">
 		<p class="line-three-address">514 S. Magnolia St. Orlando, FL 32806</p>
-		<p class="line-three-copyright">© 2021. All Rights Reserved. Design by TemplateMonster</p>
+		<p class="line-three-copyright">© 2021. All Rights Reserved. Design by TemplateMonster(Redesign by Atieh Sorahitalab)</p>
 	</div>
 </div>

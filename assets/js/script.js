@@ -83,7 +83,7 @@ $(document).ready(function(){
             live:         true        // default
         }
     )
-    wow.init();
+    new WOW().init();
     
     
     $('#frmReserve').submit(function(e){
