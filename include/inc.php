@@ -1,12 +1,11 @@
 <?php
-	//defined("_AS") or die("Access denied!");
-	session_start();
+	defined("_AST") or die("Access denied");
 
 	require dirname(__FILE__)."/autoloader.php";
 	require dirname(__FILE__)."/config.php";
 	require dirname(__FILE__)."/functions.php";
-	require dirname(__FILE__)."/define.php";
+    require dirname(__FILE__)."/defines.php";
+	
+	$session =new Session();
+	
 ?>
-
-
-

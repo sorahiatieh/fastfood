@@ -1,5 +1,10 @@
 <?php
-    require 'include/config.php';
+	define("_AST",1);
+	require "include/inc.php";
+	/*var_dump($_GET);
+	exit;*/
+	
+	require  PAGE_PATH.'controller.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,7 +34,7 @@
 <body>
     <section class="section header-section">
         <?php
-            require "pages/requires/header.php";
+            require "pages/requires/header.view.php";
         ?>
     </section>
     

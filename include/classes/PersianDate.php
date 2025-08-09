@@ -8,18 +8,18 @@
     
     class C_JDATE
     {
-        function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='en')
+        static  function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='en')
         {
             $T_sec=0;/* <= رفع خطاي زمان سرور ، با اعداد '+' و '-' بر حسب ثانيه */
 
             if($time_zone!='local')
                 date_default_timezone_set(($time_zone=='')?'Asia/Tehran':$time_zone);
 
-            $ts=$T_sec+(($timestamp=='' or $timestamp=='now')?time():$this->tr_num($timestamp));
+            $ts=$T_sec+(($timestamp=='' or $timestamp=='now')?time():self::tr_num($timestamp));
 
             $date=explode('_',date('H_i_j_n_O_P_s_w_Y',$ts));
 
-            list($j_y,$j_m,$j_d)=$this->gregorian_to_jalali($date[8],$date[3],$date[2]);
+            list($j_y,$j_m,$j_d)=self::gregorian_to_jalali($date[8],$date[3],$date[2]);
 
             $doy=($j_m<7)?(($j_m-1)*31)+$j_d-1:(($j_m-7)*30)+$j_d+185;
             $kab=($j_y%33%4-1==(int)($j_y%33*.05))?1:0;
@@ -68,13 +68,13 @@
                         $out.=($j_d<10)?'0'.$j_d:$j_d;
                         break;
                     case'D':
-                        $out.=$this->jdate_words(array('kh'=>$date[7]),' ');
+                        $out.=self::jdate_words(array('kh'=>$date[7]),' ');
                         break;
                     case'f':
-                        $out.=$this->jdate_words(array('ff'=>$j_m),' ');
+                        $out.=self::jdate_words(array('ff'=>$j_m),' ');
                         break;
                     case'F':
-                        $out.=$this->jdate_words(array('mm'=>$j_m),' ');
+                        $out.=self::jdate_words(array('mm'=>$j_m),' ');
                         break;
                     case'H':
                         $out.=$date[0];
@@ -86,16 +86,16 @@
                         $out.=$j_d;
                         break;
                     case'J':
-                        $out.=$this->jdate_words(array('rr'=>$j_d),' ');
+                        $out.=self::jdate_words(array('rr'=>$j_d),' ');
                         break;
                     case'k';
-                        $out.=$this->tr_num(100-(int)($doy/($kab+365)*1000)/10,$tr_num);
+                        $out.=self::tr_num(100-(int)($doy/($kab+365)*1000)/10,$tr_num);
                         break;
                     case'K':
-                        $out.=$this->tr_num((int)($doy/($kab+365)*1000)/10,$tr_num);
+                        $out.=self::tr_num((int)($doy/($kab+365)*1000)/10,$tr_num);
                         break;
                     case'l':
-                        $out.=$this->jdate_words(array('rh'=>$date[7]),' ');
+                        $out.=self::jdate_words(array('rh'=>$date[7]),' ');
                         break;
                     case'L':
                         $out.=$kab;
@@ -104,7 +104,7 @@
                         $out.=($j_m>9)?$j_m:'0'.$j_m;
                         break;
                     case'M':
-                        $out.=$this->jdate_words(array('km'=>$j_m),' ');
+                        $out.=self::jdate_words(array('km'=>$j_m),' ');
                         break;
                     case'n':
                         $out.=$j_m;
@@ -121,19 +121,19 @@
                         $out.=$date[4];
                         break;
                     case'p':
-                        $out.=$this->jdate_words(array('mb'=>$j_m),' ');
+                        $out.=self::jdate_words(array('mb'=>$j_m),' ');
                         break;
                     case'P':
                         $out.=$date[5];
                         break;
                     case'q':
-                        $out.=$this->jdate_words(array('sh'=>$j_y),' ');
+                        $out.=self::jdate_words(array('sh'=>$j_y),' ');
                         break;
                     case'Q':
                         $out.=$kab+364-$doy;
                         break;
                     case'r':
-                        $key=$this->jdate_words(array('rh'=>$date[7],'mm'=>$j_m));
+                        $key=self::jdate_words(array('rh'=>$date[7],'mm'=>$j_m));
                         $out.=$date[0].':'.$date[1].':'.$date[6].' '.$date[4].' '.$key['rh'].'، '.$j_d.' '.$key['mm'].' '.$j_y;
                         break;
                     case's':
@@ -149,10 +149,10 @@
                         $out.=$ts;
                         break;
                     case'v':
-                        $out.=$this->jdate_words(array('ss'=>substr($j_y,2,2)),' ');
+                        $out.=self::jdate_words(array('ss'=>substr($j_y,2,2)),' ');
                         break;
                     case'V':
-                        $out.=$this->jdate_words(array('ss'=>$j_y),' ');
+                        $out.=self::jdate_words(array('ss'=>$j_y),' ');
                         break;
                     case'w':
                         $out.=($date[7]==6)?0:$date[7]+1;
@@ -195,19 +195,19 @@
                 }
             }
 
-            return($tr_num!='en')?$this->tr_num($out,'fa','.'):$out;
+            return($tr_num!='en')?self::tr_num($out,'fa','.'):$out;
         }
         
-        function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='en')
+       static function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='en')
         {
             $T_sec=0;/* <= رفع خطاي زمان سرور ، با اعداد '+' و '-' بر حسب ثانيه */
 
             if($time_zone!='local')
                 date_default_timezone_set(($time_zone=='')?'Asia/Tehran':$time_zone);
 
-            $ts=$T_sec+(($timestamp=='' or $timestamp=='now')?time():$this->tr_num($timestamp));
+            $ts=$T_sec+(($timestamp=='' or $timestamp=='now')?time():self::tr_num($timestamp));
             $date=explode('_',date('h_H_i_j_n_s_w_Y',$ts));
-            list($j_y,$j_m,$j_d)=$this->gregorian_to_jalali($date[7],$date[4],$date[3]);
+            list($j_y,$j_m,$j_d)=self::gregorian_to_jalali($date[7],$date[4],$date[3]);
             $doy=($j_m<7)?(($j_m-1)*31)+$j_d-1:(($j_m-7)*30)+$j_d+185;
             $kab=($j_y%33%4-1==(int)($j_y%33*.05))?1:0;
             $sl=strlen($format);
@@ -231,10 +231,10 @@
                 {
                     /* Day */
                     case'a':
-                        $out.=$this->jdate_words(array('kh'=>$date[6]),' ');
+                        $out.=self::jdate_words(array('kh'=>$date[6]),' ');
                         break;
                     case'A':
-                        $out.=$this->jdate_words(array('rh'=>$date[6]),' ');
+                        $out.=self::jdate_words(array('rh'=>$date[6]),' ');
                         break;
                     case'd':
                         $out.=($j_d<10)?'0'.$j_d:$j_d;
@@ -298,10 +298,10 @@
                     /* Month */
                     case'b':
                     case'h':
-                        $out.=$this->jdate_words(array('km'=>$j_m),' ');
+                        $out.=self::jdate_words(array('km'=>$j_m),' ');
                         break;
                     case'B':
-                        $out.=$this->jdate_words(array('mm'=>$j_m),' ');
+                        $out.=self::jdate_words(array('mm'=>$j_m),' ');
                         break;
                     case'm':
                         $out.=($j_m>9)?$j_m:'0'.$j_m;
@@ -368,7 +368,7 @@
                         break;
                     /* Time and Date Stamps */
                     case'c':
-                        $key=$this->jdate_words(array('rh'=>$date[6],'mm'=>$j_m));
+                        $key=self::jdate_words(array('rh'=>$date[6],'mm'=>$j_m));
                         $out.=$date[1].':'.$date[2].':'.$date[5].' '.date('P',$ts).' '.$key['rh'].'، '.$j_d.' '.$key['mm'].' '.$j_y;
                         break;
                     case'D':
@@ -397,18 +397,18 @@
                         $out.=$sub;
                 }
             }
-            return($tr_num!='en')?$this->tr_num($out,'fa','.'):$out;
+            return($tr_num!='en')?self::tr_num($out,'fa','.'):$out;
         }
 
 
-        function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$is_dst=-1)
+        static function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$is_dst=-1)
         {
-            $h=$this->tr_num($h);
-            $m=$this->tr_num($m);
-            $s=$this->tr_num($s);
-            $jm=$this->tr_num($jm);
-            $jd=$this->tr_num($jd);
-            $jy=$this->tr_num($jy);
+            $h=self::tr_num($h);
+            $m=self::tr_num($m);
+            $s=self::tr_num($s);
+            $jm=self::tr_num($jm);
+            $jd=self::tr_num($jd);
+            $jy=self::tr_num($jy);
 
             if($h=='' and $m=='' and $s=='' and $jm=='' and $jd=='' and $jy=='')
             {
@@ -416,21 +416,21 @@
             }
             else
             {
-                list($year,$month,$day)=$this->jalali_to_gregorian($jy,$jm,$jd);
+                list($year,$month,$day)=self::jalali_to_gregorian($jy,$jm,$jd);
                 
                 return mktime($h,$m,$s,$month,$day,$year);
             }
         }
 
 
-        function jgetdate($timestamp='',$none='',$tz='Asia/Tehran',$tn='en')
+       static function jgetdate($timestamp='',$none='',$tz='Asia/Tehran',$tn='en')
         {
-            $ts=($timestamp=='')?time():$this->tr_num($timestamp);
-            $jdate=explode('_',$this->jdate('F_G_i_j_l_n_s_w_Y_z',$ts,'',$tz,$tn));
+            $ts=($timestamp=='')?time():self::tr_num($timestamp);
+            $jdate=explode('_',self::jdate('F_G_i_j_l_n_s_w_Y_z',$ts,'',$tz,$tn));
 
             return array(
-                'seconds'=>$this->tr_num((int)$this->tr_num($jdate[6]),$tn),
-                'minutes'=>$this->tr_num((int)$this->tr_num($jdate[2]),$tn),
+                'seconds'=>self::tr_num((int)self::tr_num($jdate[6]),$tn),
+                'minutes'=>self::tr_num((int)self::tr_num($jdate[2]),$tn),
                 'hours'=>$jdate[1],
                 'mday'=>$jdate[3],
                 'wday'=>$jdate[7],
@@ -439,22 +439,22 @@
                 'yday'=>$jdate[9],
                 'weekday'=>$jdate[4],
                 'month'=>$jdate[0],
-                0=>$this->tr_num($ts,$tn)
+                0=>self::tr_num($ts,$tn)
             );
         }
 
 
-        function jcheckdate($jm,$jd,$jy)
+       static function jcheckdate($jm,$jd,$jy)
         {
-            $jm=$this->tr_num($jm);
-            $jd=$this->tr_num($jd);
-            $jy=$this->tr_num($jy);
+            $jm=self::tr_num($jm);
+            $jd=self::tr_num($jd);
+            $jy=self::tr_num($jy);
             $l_d=($jm==12)?(($jy%33%4-1==(int)($jy%33*.05))?30:29):31-(int)($jm/6.5);
             return($jm>0 and $jd>0 and $jy>0 and $jm<13 and $jd<=$l_d)?true:false;
         }
 
 
-        function tr_num($str,$mod='en',$mf='٫')
+      static  function tr_num($str,$mod='en',$mf='٫')
         {
             $num_a=array('0','1','2','3','4','5','6','7','8','9','.');
             $key_a=array('۰','۱','۲','۳','۴','۵','۶','۷','۸','۹',$mf);
@@ -462,11 +462,11 @@
         }
 
 
-        function jdate_words($array,$mod='')
+       static function jdate_words($array,$mod='')
         {
             foreach($array as $type=>$num)
             {
-                $num=(int)$this->tr_num($num);
+                $num=(int)self::tr_num($num);
 
                 switch($type)
                 {
@@ -535,11 +535,11 @@
         }
 
 
-        function gregorian_to_jalali($g_y,$g_m,$g_d,$mod='')
+       static function gregorian_to_jalali($g_y,$g_m,$g_d,$mod='')
         {
-            $g_y=$this->tr_num($g_y);
-            $g_m=$this->tr_num($g_m);
-            $g_d=$this->tr_num($g_d);/* <= :اين سطر ، جزء تابع اصلي نيست */
+            $g_y=self::tr_num($g_y);
+            $g_m=self::tr_num($g_m);
+            $g_d=self::tr_num($g_d);/* <= :اين سطر ، جزء تابع اصلي نيست */
             $d_4=$g_y%4;
             $g_a=array(0,0,31,59,90,120,151,181,212,243,273,304,334);
             $doy_g=$g_a[(int)$g_m]+$g_d;
@@ -582,11 +582,11 @@
         }
 
         
-        function jalali_to_gregorian($j_y,$j_m,$j_d,$mod='')
+      static  function jalali_to_gregorian($j_y,$j_m,$j_d,$mod='')
         {
-            $j_y=$this->tr_num($j_y);
-            $j_m=$this->tr_num($j_m);
-            $j_d=$this->tr_num($j_d);/* <= :اين سطر ، جزء تابع اصلي نيست */
+            $j_y=self::tr_num($j_y);
+            $j_m=self::tr_num($j_m);
+            $j_d=self::tr_num($j_d);/* <= :اين سطر ، جزء تابع اصلي نيست */
             $d_4=($j_y+1)%4;
             $doy_j=($j_m<7)?(($j_m-1)*31)+$j_d:(($j_m-7)*30)+$j_d+186;
             $d_33=(int)((($j_y-55)%132)*.0305);
