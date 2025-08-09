@@ -32,27 +32,16 @@
             require "pages/requires/header.php";
         ?>
     </section>
-
+    
     <?php
-        if(isset($_GET['page']))
-        {
-            $page=$_GET['page'];
-            if(isPage($page)){
-                $Details=getPageDetails($page);
-                if($Details['custom_page']==1){
-                    if(file_exists("pages/{$page}.php"))
-                        require "pages/{$page}.php";
-                    else
-                        require "pages/public_page.php";
-                }else{
-                    require "pages/public_page.php";
-                }
-            }else{
-                require "pages/sections/404.php";
-            }
-        }
-        else
-             require "pages/main.php";
+	    $page_name=SiteBase::getPageName();
+	    
+	    if(SiteBase::getHasView()){
+		    $filename=SECTIONS.$page_name.".view.php";
+		    require $filename;
+	    }else{
+		    require PAGE_PATH."public_page.php";
+	    }
     ?>
 
     <footer class="footer-modern-footer">
