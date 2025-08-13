@@ -1,18 +1,7 @@
 <?php
 	$menu=new DB_MENU();
 	$ListOfMenus=$menu->getListOfSiteMenus()->run();
-	/*$ListOfMenus=$menu->setWheres(array(
-		"enable"=>1
-	))->setOrderby(array(
-		"sort"=>"ASC",
-		"title"=>"ASC"
-	))->setReturnFields(array(
-		"parent_id",
-		"title",
-		"target_type",
-		"target",
-		"new_window"
-	))->setLimit(0)->getList()->getSQL();*/
+	
 	
 	$page_db=new DB_PAGE();
 	for($i=0;$i<count($ListOfMenus);$i++){

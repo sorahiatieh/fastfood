@@ -3,14 +3,26 @@
 	
 	SiteBase::setSiteTitle($setting_db->getSetting('site_title'));
 	
-	// اسلایدر
+	
 	require SECTIONS."main/slider.controller.php";
-	// بخش سرویس ها
-	//require SECTIONS."main/services.controller.php";
-	// آخرین نمونه کارها
+	
 	require SECTIONS."main/portfolio.controller.php";
 	
+	require SECTIONS."main/offer-menu.controller.php";
 	
+	require SECTIONS."main/atmosphere.controller.php";
+	
+	require SECTIONS."main/selected-pizza.controller.php";
+	
+	require SECTIONS."main/bg-salad.controller.php";
+	
+	require SECTIONS."main/people-say.controller.php";
+	
+	require SECTIONS."main/gallery.controller.php";
+	
+	require SECTIONS."main/book-your.controller.php";
+	
+	require SECTIONS."main/connection-box.controller.php";
 	
 	SiteBase::setData("main",$CP);
 	
@@ -22,3 +34,5 @@
 	echo "</pre>";
 	exit;*/
 ?>
+
+
