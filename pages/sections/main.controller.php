@@ -6,15 +6,10 @@
 	// اسلایدر
 	require SECTIONS."main/slider.controller.php";
 	// بخش سرویس ها
-	require SECTIONS."main/services.controller.php";
+	//require SECTIONS."main/services.controller.php";
 	// آخرین نمونه کارها
 	require SECTIONS."main/portfolio.controller.php";
-	// آخرین های وبلاگ
-	require SECTIONS."main/last_blogs.controller.php";
-	//چرا باید شرکت ما را انتخاب نمایید
-	require SECTIONS."main/why_choice.controller.php";
-	// شعار شرکت
-	require SECTIONS."main/slogan.controller.php";
+	
 	
 	
 	SiteBase::setData("main",$CP);
