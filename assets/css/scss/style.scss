@@ -527,23 +527,23 @@ img {
               left: 0;
             }
 
-            &:hover{
-              background-color: var(--yellowMenu);
 
-              i{
-                color: var(--secondaryBlack);
-              }
-            }
           }
 
-          /*.linearicons-leaf:before {
-              content: "\eb2d";
-          }*/
+
 
           .service-terri-title {
             .name {
               color: var(--primaryWhite) !important;
             }
+          }
+        }
+
+        &:hover .services-terri-icon{
+          background-color: var(--yellowMenu);
+
+          i{
+            color: var(--secondaryBlack);
           }
         }
       }
