@@ -10,12 +10,11 @@
                     <p class="p-content-atmosphere">PizzaHouse is the place of the best pizza and high-quality
                         service.</p>
                     <p class="ben-atmosphere">
-                        <span class="line-content"></span>
+                        <span class="line-content line-animate"></span>
                         <span class="content-ben">Ben Smith, Founder</span>
                     </p>
                     <a href="#" class="btn best-btn">
-                        <div class="content-original btn-info">View Our Services</div>
-                        <div class="content-dubbed">View Our Services</div>
+                        <div class="content-original btn-info">VIEW OUR SERVICES</div>
                     </a>
                 </div>
             </div>

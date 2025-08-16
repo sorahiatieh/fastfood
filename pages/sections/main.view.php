@@ -4,7 +4,7 @@
     
     $CP=SiteBase::getData("main");
 ?>
-<div class="container">
+<div class="">
     <?php
         //خدمات شرکت-
         require SECTIONS."main/offer-menu.view.php";

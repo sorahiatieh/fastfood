@@ -287,7 +287,20 @@ img {
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-/* Main sections */
+@keyframes line-animate
+{
+  0%{
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  100%{
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+
+  /* Main sections */
 
 .header-section {
   padding-right: 15px;
@@ -499,8 +512,8 @@ img {
             color: var(--primaryWhite);
             border-radius: 50%;
             padding: 10px;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             transition: all .2s ease-in-out;
             z-index: 1;
 
@@ -526,11 +539,7 @@ img {
               bottom: 0;
               left: 0;
             }
-
-
           }
-
-
 
           .service-terri-title {
             .name {
@@ -539,7 +548,7 @@ img {
           }
         }
 
-        &:hover .services-terri-icon{
+        &:hover .service-terri-icon{
           background-color: var(--yellowMenu);
 
           i{
@@ -568,16 +577,6 @@ img {
     z-index: 1;
   }
 
-  .image-atmosphere {
-    /*img{
-        min-width: 101%;
-        min-height: 101%;
-        max-width: none;
-        display: block;
-        transform: translate3d(-50%, 2px, 0px);
-    }*/
-  }
-
   .atmosphere-content {
     position: relative;
     z-index: 1;
@@ -601,21 +600,41 @@ img {
         }
 
         .ben-atmosphere {
+          position: relative;
+          padding-left: 55px;
+          font-size: 18px;
+          line-height: 1.55556;
+          font-weight: 300;
+          letter-spacing: .025em;
+          color: rgba(255, 255, 255, 0.3);
+
           .line-content {
-            width: 10px;
-            border: 2px solid var(--yellowMenu);
+            display: inline-block;
+            width: 40px;
+            height: 3px;
+            margin-right: 15px;
+            background: var(--yellowMenu);
+          }
+
+          .line-animate{
+            animation-name: line-animate;
+            animation-duration: 200ms;
           }
         }
 
         .best-btn {
+            .btn-info{
+              padding: 2rem;
+              border-radius: 5px;
+              background-color: #73cca1 !important;
 
-        }
-
-        .best-btn:hover,
-        .best-btn:active {
-          color: var(--secondaryBlack);
-          background-color: var(--yellowMenu);
-          border-color: var(--purpleMenu);
+              &:hover,
+              &:active{
+                color: var(--secondaryBlack);
+                background-color: var(--yellowMenu) !important;
+                border-color: var(--purpleMenu);
+              }
+            }
         }
       }
     }
@@ -1591,6 +1610,14 @@ img {
     display: inline-block;
     max-width: 90%;
   }
+  .services-terri-icon {
+    height: 83px;
+    width: 83px;
+    font-size: 42px;
+    line-height: 83px;
+  }
 }
+
+
 
 
