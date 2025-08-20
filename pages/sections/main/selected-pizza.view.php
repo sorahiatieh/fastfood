@@ -4,7 +4,6 @@
     <div class="row products">
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="product-box wow fadeInLeft">
-                <div class="cover"></div>
                 <article class="product">
                     <div class="product-figure">
                         <img src="assets/img/product/product-1.png" alt="">

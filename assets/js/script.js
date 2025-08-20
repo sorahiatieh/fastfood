@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+
     $('#slider').nivoSlider({
     effect:'random',
     slices: 15,
