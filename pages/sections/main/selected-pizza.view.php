@@ -23,10 +23,14 @@
                     </div>
                     <div class="product-button">
                         <div class="button-wrap">
-                            <div class="content-original">Add to cart</div>
+                            <a href="pages/sections/cart.view.php" class="button button-primary">
+                                <div class="content-original">Add to cart</div>
+                            </a>
                         </div>
                         <div class="button-wrap">
-                            <div class="content-original">View Product</div>
+                            <a href="" class="button button-primary">
+                                <div class="content-original">View Product</div>
+                            </a>
                         </div>
                     </div>
                 </article>

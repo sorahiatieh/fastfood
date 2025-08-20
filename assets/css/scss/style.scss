@@ -297,9 +297,21 @@ img {
   transition: transform .3s, opacity .3s;
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
+.content-dubbed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translate3d(0, 20%, 0);
+  pointer-events: none;
+}
 
-@keyframes line-animate
-{
+@keyframes line-animate {
   0%{
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
@@ -309,8 +321,7 @@ img {
   }
 }
 
-@keyframes fadeInLeft
-{
+@keyframes fadeInLeft {
   0%{
     opacity: 0;
     transform: translate3d(-40px, 0, 0);
@@ -673,6 +684,23 @@ img {
         flex-direction: column;
         align-items: center;
 
+        &:hover::before {
+          position: absolute;
+          content: '';
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: rgba(255, 255, 255, 0.45);
+          pointer-events: none;
+          z-index: 1;
+
+          &.product-button{
+            display: inherit;
+            z-index: 1.2;
+          }
+        }
+
         .product {
           position: relative;
           overflow: hidden;
@@ -707,6 +735,25 @@ img {
 
           .product-button{
             display: none;
+             .button{
+               width: 100%;
+               letter-spacing: .01em;
+               pointer-events: auto;
+               min-width: 176px;
+             }
+
+            .button-primary,
+            .button-primary:focus {
+              color: #151515;
+              background-color: #ffe745;
+              border-color: #ffe745;
+            }
+
+            .button-primary:hover, .button-primary:active {
+              color: #ffffff;
+              background-color: #73cca1;
+              border-color: #6046b6;
+            }
           }
         }
       }
@@ -1632,6 +1679,59 @@ img {
   }
   .breadcrumbs-custom {
     padding: 116px 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .desktop .product:hover .product-button::before {
+    width: 500px;
+    height: 500px;
+    opacity: 1;
+    visibility: visible;
+    background: rgba(255, 255, 255, 0.92);
+    transition: all .35s ease;
+  }
+  .desktop .product-button::before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    visibility: hidden;
+    background: rgba(96, 70, 182, 0.5);
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 50%;
+    transition-delay: .35s;
+  }
+  .desktop .product:hover .product-button .button-wrap {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+  .desktop .product-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  .desktop .product-button .button-wrap:first-child {
+    transform: translate3d(15px, 0, 0);
+  }
+  .desktop .product-button .button-wrap {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .35s ease-in-out;
+  }
+  .desktop .product-button .button-wrap .button {
+    font-weight: 600;
+    letter-spacing: 2px;
   }
 }
 
