@@ -3,7 +3,7 @@
   --purpleMenu: #6046b6;
   --yellowMenu: #ffe745;
   --primaryWhite: #ffffff;
-  --secondaryWhite: #fff;
+ // --secondaryWhite: #fff;
   --primaryBlack: #000000;
   --secondaryBlack: #151515;
   --footerBlack: #38393b;
@@ -480,6 +480,18 @@ img {
 }
 
 .slider {
+  position: relative;
+
+  .slider-text{
+    position: absolute;
+    top: 40%;
+    left: 20%;
+
+      .slider-desc{
+        color: var(--primaryWhite);
+        font-size: 46px;
+      }
+  }
 }
 
 .offer-menu {
@@ -806,7 +818,7 @@ img {
           margin-right: 60px;
 
           .text-customer {
-            text-wrap: avoid;
+            text-wrap: nowrap;
           }
 
           .figure-customer {

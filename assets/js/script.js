@@ -69,7 +69,7 @@ $(document).ready(function(){
     $( ".service-line" ).fadeIn( "slow", function() {
         // Animation complete
     });
-    
+
     // animate in pages
    /* wow=new WOW({
         animatedClass: ' animated',
