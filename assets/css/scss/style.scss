@@ -838,52 +838,56 @@ img {
 }
 
 .gallery {
+  grid-column: 1/-1;
+
   .gallery__inner{
     display: grid;
     grid-template-rows: repeat(2,280px);
     grid-template-columns: repeat(5, 1fr);
+    padding: 20px 50px;
     grid-gap: 1rem;
     grid-template-areas: "gallery-1 gallery-2 gallery-3 galler-4 galler-4" "gallery-1 gallery-2 gallery-5 gallery-6 gallery-7";
 
     .gallery__inner-img{
       width: 100%;
+      border-radius: 15px;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
     }
 
     .gallery-1 {
-      background-image: url("../../img/gallery/gallery-1.jpg");
+      background-image: url("../img/gallery/gallery-1.jpg");
       grid-area: gallery-1;
     }
 
     .gallery-2 {
-      background-image: url("../../img/gallery/gallery-2.jpg");
+      background-image: url("../img/gallery/gallery-2.jpg");
       grid-area: gallery-2;
     }
 
     .gallery-3 {
-      background-image: url("../../img/gallery/gallery-3.jpg");
+      background-image: url("../img/gallery/gallery-3.jpg");
       grid-area: gallery-3;
     }
 
     .gallery-4 {
-      background-image: url("../../img/gallery/gallery-4.jpg");
+      background-image: url("../img/gallery/gallery-4.jpg");
       grid-area: gallery-4;
     }
 
     .gallery-5 {
-      background-image: url("../../img/gallery/gallery-5.jpg");
+      background-image: url("../img/gallery/gallery-5.jpg");
       grid-area: gallery-5;
     }
 
     .gallery-6 {
-      background-image: url("../../img/gallery/gallery-6.jpg");
+      background-image: url("../img/gallery/gallery-6.jpg");
       grid-area: gallery-6;
     }
 
     .gallery-7 {
-      background-image: url("../../img/gallery/gallery-7.jpg");
+      background-image: url("../img/gallery/gallery-7.jpg");
       grid-area: gallery-7;
     }
 
@@ -1745,6 +1749,10 @@ img {
     font-weight: 600;
     letter-spacing: 2px;
   }
+
+  .gallery__inner{
+    grid-template-areas: "";
+  }
 }
 
 @media (min-width: 768px) {
@@ -1757,6 +1765,11 @@ img {
     width: 83px;
     font-size: 42px;
     line-height: 83px;
+  }
+  gallery__inner{
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(4,280px);
+    grid-template-areas: "";
   }
 }
 
