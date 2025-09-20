@@ -64,6 +64,7 @@
 					
 				case self::TYPE_DELETE:
 					break;
+					
 				case self::TYPE_INSERT:
 					return self::$mysqli->insert_id;
 					break;

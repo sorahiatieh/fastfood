@@ -4,7 +4,7 @@
 	
 	date_default_timezone_set("Asia/Tehran");
 	
-	$mysqli=new mysqli("localhost","root","","company-2025");
+	$mysqli=new mysqli("localhost","root","","fastfood");
 	
 	if($mysqli->connect_errno)
 	    die("خطا در اتصال به دیتابیس");
